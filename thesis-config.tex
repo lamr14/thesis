@@ -1,0 +1,260 @@
+% !TEX root = ./TUCthesis.tex
+
+%% ****************************************************************************************************
+%% 0. Set the encoding of your files. UTF-8 is the only sensible encoding nowadays. If you can't read
+%% äöüßáéçèê∂åëæƒÏ€ then change the encoding setting in your editor, not the line below. If your editor
+%% does not support utf8 use another editor!
+%% ****************************************************************************************************
+\PassOptionsToPackage{utf8}{inputenc}
+\usepackage{inputenc}
+\PassOptionsToPackage{T1}{fontenc} % T2A for cyrillic
+\usepackage{fontenc}     
+
+
+%% ****************************************************************************************************
+%% 1. Configure classicthesis for your needs here. Frequently considered changes:
+%% - Remove "drafting" below in order to deactivate the time-stamp on the pages
+%% - Use "floatperchapter" if many floats (figures, tables, equations) exist
+%% - Choose "dottedtoc" if you like page numbers to be right-aligned in the table of contents
+%% For more available options see the source code of classicthesis.sty 
+%% ****************************************************************************************************
+\PassOptionsToPackage{	eulerchapternumbers,% use big chapter numbers in Euler math font
+					listings,% add support for code listings using \lstlisting
+					pdfspacing,% use pdftex for improved letter spacing
+					dottedtoc,% use dotted lines in table of contents (right-align page numbers)
+					floatperchapter,% enumerate tables/figures per chapter instead of consecutively
+					%drafting,% add version stamp at the bottom of each page
+					subfig,% allow for the inclusion of subfigures in any figure environment
+					beramono,% use Beramono font for monospaced text
+					eulermath% use Euler math font
+				     }{classicthesis}                                   
+					      
+
+%% ****************************************************************************************************
+%% 2. Personal thesis-related data to auto-generate title page etc
+%% Make sure to terminate each of these fields with \xspace for proper formatting
+%% ****************************************************************************************************
+\newcommand{\myTitle}{Master Thesis Name \xspace}
+\newcommand{\myName}{Luis Alberto Meza Ruiz\xspace}
+\newcommand{\myID}{450801\xspace}
+\newcommand{\myThesisType}{ITIS Master Thesis\xspace}
+\newcommand{\mySubmitDate}{31 (MONTH) 2017\xspace} % format your date according to your thesis language!
+\newcommand{\myThesisNumber}{ES-P004\xspace} % ask supervisor for this number - do not leave at 000!
+
+\newcommand{\myProf}{Dr.-Ing.~Andreas Reinhardt\xspace} % Advisor and first referee
+\newcommand{\myOtherProf}{Prof.~Dr.~Sven Hartmann\xspace} % Second referee
+\newcommand{\myDepartment}{Embedded Systems\xspace} % Group within the Department of Informatics
+\newcommand{\myLocation}{Clausthal-Zellerfeld\xspace} % Location where you will sign the statutory declaration
+\newcommand{\myUni}{Technische Universit\"at Clausthal\xspace}
+
+
+%% ****************************************************************************************************
+%% 3. TU Clausthal specifics
+%% Note that TUC only specifies four colors (one of which is a very light gray, thus unusable)
+%% If you need to color text, either use \textcolor{TUDred}{text to color}
+%% Alternatively, if the color shall be applied to links, specify it in the hyperref config below
+%% ****************************************************************************************************
+\usepackage[dvipsnames]{xcolor} % allow for TUC colors
+  \definecolor{TUCgreen}{rgb}{0,0.55,0.31}
+  \definecolor{TUCgrey1}{rgb}{0.5,0.5,0.5}
+  \definecolor{TUCgrey2}{rgb}{0.9,0.9,0.9}
+  \definecolor{TUCred}{rgb}{0.55,0.11,0}
+\usepackage{tikz} % allow us to place the TUC logo on front page
+\usepackage{translations} % allow us to automatically use english front matter
+
+\usepackage{epstopdf} % for the TUC logo on the front page, when using pdflatex on Windows
+\epstopdfsetup{update}
+
+%% uncomment one of the following options if your thesis must be typeset in sans-serif font
+%\usepackage[default,osfigures]{opensans}% use a sans-serif font
+%\usepackage[sfdefault]{FiraSans}% use a sans-serif font
+
+
+%% ****************************************************************************************************
+%% 4. Loading some handy packages
+%% ****************************************************************************************************
+\PassOptionsToPackage{ngerman,american}{babel}   % add language support
+\usepackage{babel}%	allow for proper hyphenation in languages defined above
+\usepackage{csquotes}%	set quotation marks according to used language
+
+\PassOptionsToPackage{%	add bibliography support
+	backend=bibtex8,%		use BibTeX (change to biber if you know what you are doing)
+	bibencoding=ascii,%		assume that BibTeX file is saved as ASCII
+	language=auto,%		use hyphenation={} field in BibTeX to apply correct hyphenation
+	style=numeric-comp,%	use numeric format & compress 1,2,3 to 1-3 (alternatives: numeric,alphabetic)
+	sorting=nyt,% 			sorting by name, year, title
+	maxbibnames=10, %	how many authors are listed before adding "et al."?
+	%backref=true,%			show on which page a reference has been cited
+}{biblatex}
+\usepackage{biblatex}
+
+%% math environments and more by the American Mathematics Society 
+\PassOptionsToPackage{fleqn}{amsmath}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%% allow the use of acronyms (that automatically show up in the list of acronyms)
+%% define any acronyms in FrontBackmatter/Contents.tex
+%% Then use the acronyms in the text as follow:
+%% - \ac{UML}		full spelled-out on first use, subsequently abbreviated
+%% - \acp{UML}	plural case of the aforementioned one
+%% - \acf{UML}	full spelled-out version, even if used before
+\PassOptionsToPackage{printonlyused,smaller}{acronym} 
+\usepackage{acronym} % nice macros for handling all acronyms in the thesis
+
+\usepackage{textcomp} % fix warning with missing font shapes
+\usepackage{scrhack} % fix warnings when using KOMA with listings package          
+\usepackage{xspace} % to get the spacing after macros right  
+\usepackage{mparhack} % get marginpar right
+\usepackage{fixltx2e} % fixes some LaTeX stuff --> since 2015 in the LaTeX kernel (see below)
+\usepackage{lipsum} % generate dummy text to see layout
+
+%% ****************************************************************************************************
+%% 5. Setup floats: tables, (sub)figures, and captions
+%% ****************************************************************************************************
+
+%% define how floats should be aligned. Make sure to use this in any float you add!
+\newcommand{\myfloatalign}{\centering}
+
+%% better tables. Make sure to use \tableheadline{TEXT} in each field of the headline row.
+\usepackage{tabularx}
+\setlength{\extrarowheight}{3pt} % increase table row height
+\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+
+%% formatting for float captions (smaller font size)
+\usepackage{caption}
+\captionsetup{font=small}
+\usepackage{subfig}  
+\usepackage{float}
+\usepackage{verbatim} %Used for commenting blocks, added by Luis Meza. Removable.
+%% ****************************************************************************************************
+%% 6. Prepare code listings to use monospaced font and coloring
+%% ****************************************************************************************************
+\usepackage{listings} 
+\lstset{language=[LaTeX]Tex,%C++,
+    morekeywords={PassOptionsToPackage,selectlanguage},
+    basicstyle=\small\ttfamily,% code formatting
+    stringstyle=\rmfamily,% comment formatting
+    keywordstyle=\color{RoyalBlue},% color of operators
+    %identifierstyle=\color{NavyBlue},% color of variables
+    commentstyle=\color{TUCgrey1}\ttfamily,
+    numbers=left,% set this to "left" or "none" if line numbers are needed or not
+    numberstyle=\scriptsize,
+    numbersep=8pt,
+    showstringspaces=false,% set this to "true" or "false" if spaces shall be visualized
+    breaklines=true,% break too long lines
+    belowcaptionskip=.75\baselineskip
+} 
+%% ****************************************************************************************************
+%% 6.1 Added by Luis Meza 20/03/2017
+%% ****************************************************************************************************
+\usepackage{listings}
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+
+
+
+%% ****************************************************************************************************
+%% 7. Clickable references in PDF file and citation back-references
+%% ****************************************************************************************************
+\PassOptionsToPackage{pdftex,hyperfootnotes=true,pdfpagelabels}{hyperref}
+\usepackage{hyperref}
+\pdfcompresslevel=9
+\pdfadjustspacing=1 
+\PassOptionsToPackage{pdftex}{graphicx}
+\usepackage{graphicx} 
+\usepackage{url}
+
+%% Reference coloring 
+\hypersetup{%
+    %draft,% no hyperlinking at all (useful in b/w printouts, but no clickable references)
+    colorlinks=true, linktocpage=true,%	if you want hyperlinks, use this line for colored ones - OR
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0},% this line for black links (e.g., for printing)
+    pdfstartpage=3, pdfstartview=FitV, hypertexnames=true, pdfhighlight=/O,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    urlcolor=TUCred, linkcolor=TUCgreen, citecolor=TUCgreen,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, pagecolor=Black,% any dvipscolors name can be used
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}   
+
+%% Setup autoreferences
+\makeatletter
+\@ifpackageloaded{babel}{%
+       \addto\extrasamerican{%
+			\renewcommand*{\figureautorefname}{Figure}%
+			\renewcommand*{\tableautorefname}{Table}%
+			\renewcommand*{\partautorefname}{Part}%
+			\renewcommand*{\chapterautorefname}{Chapter}%
+			\renewcommand*{\sectionautorefname}{Section}%
+			\renewcommand*{\subsectionautorefname}{Section}%
+			\renewcommand*{\subsubsectionautorefname}{Section}%     
+                }%
+       \addto\extrasngerman{% 
+			\renewcommand*{\paragraphautorefname}{Absatz}%
+			\renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+			\renewcommand*{\footnoteautorefname}{Fu\"snote}%
+			\renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+			\renewcommand*{\theoremautorefname}{Theorem}%
+			\renewcommand*{\appendixautorefname}{Anhang}%
+			\renewcommand*{\equationautorefname}{Gleichung}%        
+			\renewcommand*{\itemautorefname}{Punkt}%
+                }%  
+            \providecommand{\subfigureautorefname}{\figureautorefname}%             
+    }{\relax}
+\makeatother
+
+
+%% ********************************************************************
+%% 8. Last, but not least...
+%% ********************************************************************
+\defbibheading{classicthesis}[\bibname]{%
+  \cleardoublepage\phantomsection
+  \manualmark
+  \markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}%
+  \addtocontents{toc}{\protect\vspace{\beforebibskip}}%
+  \addcontentsline{toc}{chapter}{\tocEntry{#1}}%
+  \chapter*{#1}\label{app:bibliography}%
+}
+\usepackage{classicthesis} 
+%\ifthenelse{\boolean{@drafting}}{\renewcommand{\PrelimText}{\footnotesize[draft created on \,\today\ at \thistime\xspace (\scriptsize delete \texttt{drafting} option in \texttt{thesis-config.tex} to remove this line) \footnotesize]}}{}
+
+
+%% ****************************************************************************************************
+%% 9. Further adjustments (talk to supervisor before changing anything below)
+%% ****************************************************************************************************
+
+\ifthenelse{\boolean{@drafting}}{
+  \usepackage[textsize=footnotesize]{todonotes} % allow for inserting \todo{..} items
+}{
+  \usepackage[disable]{todonotes} % allow for inserting \todo{..} items
+}
+
+%% increase line spacing so your supervisor can add remarks more easily
+%\linespread{1.5} 
+
+%% add this if paragraphs should not be indented (should never be the case, though)
+%\parindent0pt 
+
+\let\marginpar\oldmarginpar %revert classicthesis change to make todonotes work
+\addtolength{\marginparwidth}{10mm} % make more space for todo notes
+\addtolength{\textheight}{-12mm}\addtolength{\topmargin}{14mm} % increase top margin
+
+%% DEBUG use only
+%\usepackage{showframe}

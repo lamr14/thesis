@@ -1,0 +1,74 @@
+%*******************************************************
+% Table of Contents
+%*******************************************************
+%\phantomsection
+\refstepcounter{dummy}
+\pdfbookmark[1]{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2} % <-- 2 includes up to subsections in the ToC
+\setcounter{secnumdepth}{3} % <-- 3 numbers up to subsubsections
+\manualmark
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
+\tableofcontents 
+\automark[section]{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
+
+% All lines below have been commented out. If you feel like you really need a list of figures, 
+% you can uncomment them back in. If in doubt, ask your supervisor if such a list should be present.
+
+%%*******************************************************
+%% List of Figures and of the Tables
+%%*******************************************************
+\cleardoublepage
+
+\begingroup 
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    \let\cleardoublepage\relax
+%    %*******************************************************
+%    % List of Figures
+%    %*******************************************************    
+%    %\phantomsection 
+%    \refstepcounter{dummy}
+%    %\addcontentsline{toc}{chapter}{\listfigurename}
+%    \pdfbookmark[1]{\listfigurename}{lof}
+%    \listoffigures
+%
+%    \vspace{8ex}
+%
+%    %*******************************************************
+%    % List of Tables
+%    %*******************************************************
+%    %\phantomsection 
+%    \refstepcounter{dummy}
+%    %\addcontentsline{toc}{chapter}{\listtablename}
+%    \pdfbookmark[1]{\listtablename}{lot}
+%    \listoftables
+%        
+%    \vspace{8ex}
+%%   \newpage
+%    
+%    %*******************************************************
+%    % List of Listings
+%    %*******************************************************      
+%      %\phantomsection 
+%    \refstepcounter{dummy}
+%    %\addcontentsline{toc}{chapter}{\lstlistlistingname}
+%    \pdfbookmark[1]{\lstlistlistingname}{lol}
+%    \lstlistoflistings 
+%
+%    \vspace{8ex}
+%       
+    %*******************************************************
+    % Acronyms
+    %*******************************************************
+    %\phantomsection 
+    \refstepcounter{dummy}
+    \ifcurrentbaselanguage{english}{\pdfbookmark[1]{Acronyms}{acronyms}}{\pdfbookmark[1]{Abk\"urzungsverzeichnis}{acronyms}}
+    \markboth{\ifcurrentbaselanguage{english}{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Abk\"urzungsverzeichnis}}}%
+    {\ifcurrentbaselanguage{english}{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Abk\"urzungsverzeichnis}}}
+    \ifcurrentbaselanguage{english}{\chapter*{Acronyms}}{\chapter*{Abk\"urzungsverzeichnis}}
+    \begin{acronym}[UMLX]
+        \acro{SDN}{Software-defined Networks}
+    \end{acronym}
+\endgroup

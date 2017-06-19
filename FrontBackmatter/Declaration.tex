@@ -1,0 +1,46 @@
+%*******************************************************
+% Declaration
+%*******************************************************
+\refstepcounter{dummy}
+\ifcurrentbaselanguage{english}{\pdfbookmark[1]{Statutory Declaration}{declaration}}{\pdfbookmark[1]{Eidesstattliche Versicherung}{declaration}}
+\ifcurrentbaselanguage{english}{\chapter*{Statutory Declaration}}{\chapter*{Eidesstattliche Versicherung}}
+
+% Textvorschlag gemäß Anlage 4 der APO:
+% Hiermit versichere ich, dass ich die Arbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe und dass alle Stellen dieser Arbeit, die wörtlich oder sinngemäß aus anderen Quellen übernommen wurden, als solche kenntlich gemacht wurden und dass die Arbeit in gleicher oder ähnlicher Form noch keiner anderen Prüfungsstelle vorgelegt wurde.
+
+% Textvorschlag A. Reinhardt
+Ich erkläre hiermit, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+\mbox{Alle} Stellen der Arbeit, die wörtlich oder sinngemäß aus anderen Quellen übernommen wurden, wurden als solche kenntlich gemacht.
+Die Arbeit \mbox{wurde} in gleicher oder ähnlicher Form noch keiner anderen Prüfungs\-stelle vorgelegt.
+\bigskip
+
+% Textvorschlag gemäß Anlage 4 der APO:
+% Des Weiteren erkläre ich, dass ich mit der öffentlichen Bereitstellung meiner Abschlussarbeit in der Instituts- und/oder Universitätsbibliothek einverstanden bin / nicht einverstanden bin (nicht Zutreffendes streichen).
+
+% Alternativ-Vorschlag 1
+% Hiermit erkl\"are ich mich zudem damit einverstanden, dass meine \myThesisType in der Instituts- und/oder der Universit\"atsbibliothek ausgelegt und zur Einsichtnahme aufbewahrt werden darf.
+
+% Alternativ-Vorschlag 2
+\noindent 
+Ich erkläre mich zudem mit der öffentlichen Bereitstellung meines \myThesisType in der Instituts- und/oder Universitätsbibliothek einverstanden.
+\todo{Textblock entfernen, falls keine Bereitstellung erfolgen darf.}
+
+% Ggf. einzufügen - bitte mit Betreuer abstimmen
+%
+%\bigskip
+%\noindent
+%Ich bin damit einverstanden, dass meine \myThesisType mittels geeigneter Plagiatserkennungssoftware auf möglicherweise nicht als solche kenntlich gemachte übernommene Textpassagen oder sonstige Quellen hin überprüft werden darf.
+%\todo{Mit Betreuer abstimmen, ob maschinelle Plagiatssuche erfolgen darf.}
+
+\bigskip
+
+\noindent\ifcurrentbaselanguage{english}{\textit{\myLocation, \mySubmitDate}}{\textit{\myLocation, den\ \mySubmitDate}}
+
+\smallskip
+
+\begin{flushright}
+    \begin{tabular}{m{5cm}}
+        \\ \hline
+        \centering\myName \\
+    \end{tabular}
+\end{flushright}

@@ -1,0 +1,16 @@
+*.DS_Store*
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*-converted-to.pdf
+*.run.xml
+*.synctex.gz
+*.toc
+*.tdo
+TUCthesis-blx.bib
+TUC_ES_ThesisTemplate_*.zip

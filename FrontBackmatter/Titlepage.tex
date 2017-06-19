@@ -1,0 +1,44 @@
+%*******************************************************
+% Titlepage
+%*******************************************************
+\ifcurrentbaselanguage{english}{\pdfbookmark[0]{Front page}{titlepage}}{\pdfbookmark[0]{Deckblatt}{titlepage}}
+\begin{titlepage}
+    % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+  \begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west,inner sep=0pt] at (current page.north west) {
+    \includegraphics[width=\textwidth]{tuclogo/Logo_TUC_de_RGB.eps}
+  };
+  \end{tikzpicture}
+
+
+   \begin{addmargin}[-1cm]{-3cm}
+ 
+    \begin{center}
+        \large  
+
+        \hfill
+
+        \vfill
+
+        \begingroup
+            \color{TUCgreen}\spacedallcaps{\Large \myTitle} \\[3cm]
+        \endgroup
+
+        
+        \spacedallcaps{\myThesisType} \\[1cm]
+        \ifcurrentbaselanguage{english}{presented by}{vorgelegt von}\\[0.9cm]
+        \spacedlowsmallcaps{\myName}
+        \\[3.4cm]
+
+        \vfill
+
+        %\mySubtitle \\ \medskip   
+        \ifcurrentbaselanguage{english}{\myDepartment\ group}{Abteilung f\"ur \myDepartment} \\  
+        \ifcurrentbaselanguage{english}{Department of Informatics}{Institut f\"ur Informatik} \\
+        \myUni \\[2cm]
+
+        \myThesisNumber
+
+    \end{center}  
+  \end{addmargin}       
+\end{titlepage}   

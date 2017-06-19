@@ -1,0 +1,110 @@
+	% **************************************************************************************************************
+% A Classic Thesis Style
+% An Homage to The Elements of Typographic Style
+%
+% Copyright (C) 2015 André Miede http://www.miede.de
+% TUC-specific modifications in 2016 by Andreas Reinhardt 
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% **************************************************************************************************************
+
+\RequirePackage{fix-cm} % fix some latex issues see: http://texdoc.net/texmf-dist/doc/latex/base/fixltx2e.pdf
+\documentclass[ twoside,openright,titlepage,numbers=noenddot,headinclude,
+                footinclude=true,cleardoublepage=empty,abstractoff, 
+                BCOR=8mm,paper=a4,fontsize=11pt,11pt,a4paper,%
+                ngerman,american,%
+                ]{scrreprt}
+
+%%********************************************************************
+%% Get user-specific configuration
+%%*******************************************************
+\input{thesis-config}
+
+%%********************************************************************
+%% Define bibliography input files (BibTeX)
+%%*******************************************************
+\addbibresource{Bibliography.bib}
+
+%%********************************************************************
+%% Hyphenation
+%%*******************************************************
+\hyphenation{Rein-hardt an-aly-sis}
+
+%% ********************************************************************
+%% GO!GO!GO! MOVE IT!
+%%*******************************************************
+\begin{document}
+
+%% Some basic formatting 
+\frenchspacing 
+\raggedbottom 
+\pagenumbering{roman}
+\pagestyle{plain} 
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+
+%% Uncomment one of the following options, according to thesis language.
+%\selectlanguage{ngerman}\renewcommand*{\bibname}{Literaturverzeichnis}
+\selectlanguage{american}
+
+
+%%********************************************************************
+%% Frontmatter
+%%*******************************************************
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Titleback}
+
+\pagestyle{scrheadings}
+
+\cleardoublepage\include{FrontBackmatter/Declaration}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+
+%% Acknowledgments (Danksagung) can be left out if not needed
+%\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+
+%% HINT: List of tables/figures/listings/acronyms can be uncommented in FrontBackmatter/Contents.tex
+\cleardoublepage\include{FrontBackmatter/Contents} 
+
+\ifthenelse{\boolean{@drafting}}{\listoftodos}{}
+
+%%********************************************************************
+%% Mainmatter
+%%*******************************************************
+\cleardoublepage\pagenumbering{arabic}\cleardoublepage
+
+\include{sections/section01} %Introduction
+
+\include{sections/section02} %Related Work
+
+\include{sections/section03} %SDN, Controllers, OpenFlow, WAN
+
+\include{sections/section04} %Diseño e integración de los controladores
+
+\include{sections/section05}%Pruebas y análisis
+
+\include{sections/section06} %Conclusions
+
+%%********************************************************************
+%% Other Stuff in the Back
+%%*******************************************************
+\cleardoublepage
+\printbibliography[heading=classicthesis]
+
+%% Uncomment following lines if an appendix is needed
+%\appendix\cleardoublepage
+%\include{sections/appendix}
+
+%% ********************************************************************
+%% Game Over: Restore, Restart, or Quit?
+%%*******************************************************
+\end{document}
+%% ********************************************************************
