@@ -4,15 +4,63 @@
 %************************************************
 
 \bigskip
-%\section{First section}
+\section{Motivation}
 \bigskip
-%\section{Second section}
+\section{Previous Work}
 \bigskip
-%\section{Outline}
-The organization of this work is structured as follows:
- \ac{SDN}
-%\autoref{ch:relwork} looks over some of the related research done in the field.
 
+(OF el protocolo del futuro){
+For this reason, universities and research groups are exploring new techniques to deal and to make easier to handle a LAN or WAN administration.
+
+Many hardware vendors are paying their attention to \ac{SDN}; hence the interest to know about this technology.
+SDN defines a new relationship between the network devices  and the software that controls them.
+There is the possibility of control the whole network from a single point.
+
+Since the launch of SDN, there has been some interesting projects/applications: Network virtualization (Flowvisor), load balancing (PlugNServe), traffic engineering (Aggregation) amont others.
+
+Changes in the network just require the administrator to update of the links in the controller.
+
+NOX is one of the first controllers used to make tests in SDN networks and it achieved a good performance.
+
+Depending on the network size, it is possible to apply a distributed controller (various controllers) or centralized (one controller). (insertar figura control distribuido)
+
+OpenFlow "Permite acceder directamente y manipular el plano de redireccionamiento de dispositivos de red como switches y routers, ya sean físicos o virtuales (HP 2008)"
+Facilita el acceso a dispositivos de red mediante una interfaz standard. (Figura: arquitectura de comunicación OpenFlow, Heller 2011)
+OpenFlow utiliza TCP/SSL (capas 4 y 5 del modelo OSI) para la comunicación del plano de control y el controlador.
+OpenFlow es un protocolo para operar redes SDN. Al igual que TCP, su estructura está diseñada por mensajes que establecen una comunicación y generan las acciones correspondientes(McKeown et al, 2008).
+OpenFlow es el lenguaje de comunicación entre en controlador y los switches (southbound interface).
+
+The last version of the protocol is...
+}
+
+By separating the data plane from the control plane, it is possible to have a better control of the network, thus heading to more efficiency.
+In traditional networks: proprietary devices, hard to integrate, standards for interoperability were missing (figura redes clásicas vs. OpenFlow arch, Sherwood et al 2009)
+Al desacoplar el control de datos, est significa que esto puede delegarse a un controlador externo, o sea, se puede programar desde fuera del dispositivo la manera en que serán procesados los flujos de paquetes.
+Así es posible conocer que orígenes y destinos conoce el dispositivo.
+
+\section{Research Questions}
+
+\begin{itemize}
+  \item Analyze the performance of the controllers in a simulated environment, finding the possible limitations of each controller.
+  \item Research and develop a proof of concept for SDN controllers under different administration domains, where the APIs of each controller have to communicate with each other.
+  \item Run tests of performance and throughput, in order to check the interoperability of different solutions interconnected.
+\end{itemize}
+
+\bigskip
+\section{Outline}
+The organization of this work is structured as follows:
+
+\autoref{ch:relwork} looks over some of the related research done in the field.
+\autoref{ch:relwork}
+\autoref{ch:methodology}
+\autoref{ch:evaluation}
+\autoref{ch:results}
+\autoref{ch:conclusion} the conclusions gained and possible future work
+
+ \ac{SDN}
+
+%The results are presented and explained in \autoref{ch:results}.
+%General conclusions and findings about the project will be discussed in \autoref{ch:conclusion}.
 
 Mininet 1\cite{Mininet}
 
@@ -26,8 +74,7 @@ Mininet 2\cite{team2014mininet}
 
 ODL \cite{odl}
 
+FL \cite{fl}
 
-%The results are presented and explained in \autoref{ch:results}.
+FL 2 \cite{projectfloodlight}
 
-
-%General conclusions and findings about the project will be discussed in \autoref{ch:conclusion}.
